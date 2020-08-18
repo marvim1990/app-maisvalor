@@ -7,24 +7,22 @@ import mais from '../assets/mais.png';
 export default  function Proposta({navigation}) {
   const [isLoading, setLoading] = useState(true);
   const [data, setData] = useState('');
-  const [valor,guardaValor]= useState()
 
   useEffect(() => {
-    fetch('https://reactnative.dev/movies.json')
+    fetch('http://172.16.0.191:3000/propostas')
       .then((response) => response.json())
-      .then((json) => setData(json.movies))
+      .then((json) => setData(json.data))
       .catch((error) => console.error(error))
       .finally(() => setLoading(false));
-      console.log(data)
   }, []);
         
   return (
     <View style={{ flex: 1, padding: 24 }} >
       {isLoading ? <ActivityIndicator size="large"/> : (
         <FlatList
-          data={data}
-          keyExtractor={({ id }, index) => id}
-          renderItem={({ item }) => (
+          data={ data }
+          keyExtractor={( { codigo }, index) => codigo}
+          renderItem={( { item } ) => (
             <>
             <View style ={{
               borderColor:'#000',
@@ -36,14 +34,32 @@ export default  function Proposta({navigation}) {
               width:300
             }}>
                
-            <Text>banco: {item.title}{'\n'}
-            Data_envio:{item.releaseYear}{'\n'}
-            cpf:38754698721 {'\n'}
-            tipo:foooo produto:oaoaoao{'\n'}
-            status: atatatat
+            <Text>
+               <Text style = {styles.text}>PROPOSTA:</Text> {item.proposta}{'\n'}
+                <Text style = {styles.text}>STATUS:</Text> {item.status}{'\n'}
+                <Text style = {styles.text}>CPF:</Text> {item.cpf} {'\n'}
+                <Text style = {styles.text}>BANCO:</Text> {item.banco_origi}{'\n'}
+               <Text style = {styles.text}>DATA ATUALIZAÇÃO:</Text> {item.data_atualizacao}
               </Text>
               <TouchableOpacity style = {styles.buttonDetalhes} 
-                onPress = {() =>{navigation.navigate('Detalhes',{titulo:item.title,ano:item.releaseYear})}}>
+                onPress = {() =>{navigation.navigate('Detalhes',
+                {
+                  proposta: item.proposta, 
+                  status: item.status,
+                  cpf: item.cpf,
+                  banco: item.banco_origi,
+                  data: item.data_atualizacao,
+                  tipo: item.tipo,
+                  sub: item.sub_status,
+                  cadastro:item.data_envio,
+                  produto: item.produto,
+                  convenio: item.convenio,
+                  nome: item.nome,
+                  valor: item.entregue,
+                  parcela: item.valor_parcela,
+                  prazo: item.prazo
+
+                })}}>
               <Image source ={mais}></Image>
               </TouchableOpacity>
             </View>
@@ -57,7 +73,10 @@ export default  function Proposta({navigation}) {
 
 const styles = StyleSheet.create({
   buttonDetalhes:{
-  marginLeft:70
+  marginLeft:-10
+  },
+  text:{
+    fontWeight:"bold"
   }
 })
 
