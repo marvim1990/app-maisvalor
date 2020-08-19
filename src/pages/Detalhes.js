@@ -53,6 +53,8 @@ import maisvalor from '../assets/logo.png'
       </View>
     )
   } 
+
+  
   //dados vindos da outra view route.params.(nome da variavel)
  return(
    <View style ={styles.background}>
