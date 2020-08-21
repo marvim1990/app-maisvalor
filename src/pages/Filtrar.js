@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import {View, Text, StyleSheet,TextInput,TouchableOpacity} from 'react-native';
-
+import  { Picker }  from  '@ react-native-community / picker'
 
 
 
@@ -16,20 +16,14 @@ const Filtrar = ({navigation}) => {
  const limparDados = () => {
   let dados ={
     cpf:numeroCpf,
-    numeroProposta:numeroProposta,
+    proposta:numeroProposta,
     produto: produto,
     status: v_status,
     nome: nomeCliente
   }
 
-  for(let i in dados){
-    if (dados[i] == undefined || dados[i] == ' '){
-      delete dados[i]
-    }
-  }
-  navigation.navigate('Results',
-        dados
-  )
+
+  navigation.navigate('Results',{dados})
   
 }
 
