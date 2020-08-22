@@ -7,6 +7,7 @@ export default function Results ({route}) {
   //pegando dados 
   const [isLoading, setLoading] = useState(true);
   const [dados, setDados] = useState('');
+  const [pesquisa,setPesquisa] =useState(false)
 
    let proposta = route.params.dados.proposta
    let cpf = route.params.dados.cpf
@@ -27,15 +28,19 @@ export default function Results ({route}) {
         console.log(error)
       }).finally(() => setLoading(false));
         setDados(response.data)
-    }
+    }  
     
     loadPropostas()
     
   }, []);
 
 
-  //lista ultimas propostas 
+  //lista propostas pesquisadas
   return (
+    <>
+    <View>
+      <Text>o</Text>
+    </View>
     <View style={{ flex: 1, padding: 24 }}>
       {isLoading ? <ActivityIndicator/> : (
         <FlatList
@@ -48,6 +53,7 @@ export default function Results ({route}) {
       )}
       
     </View>
+    </>
   );
 };
 
@@ -63,43 +69,3 @@ export default function Results ({route}) {
 
 
 
-//pegando dados 
-// const [isLoading, setLoading] = useState(true);
-// const [data, setData] = useState('');
-
-//  let dados = route.params
-
-//   console.log(dados)
-
-
-//  useEffect(() => {
-  
-//   async function loadResults () {
-//     const response = await api.post('/propostas/filter', {
-//       dados
-//     }).then(response => data =(response.data))
-//       .catch(console.error('error'))
-//   }
-
-  
-//     loadResults();
-    
-// }, []);
-
-
-
-// //lista ultimas propostas 
-// return (
-//   <View style={{ flex: 1, padding: 24 }}>
-    
-//       <FlatList
-//         data={data}
-//         keyExtractor={({ codigo }, index) => codigo}
-//         renderItem={({ item }) => (
-//           <Text>{item.proposta}, {item.status}</Text>
-//         )}
-//       />
-    
-    
-//   </View>
-// )

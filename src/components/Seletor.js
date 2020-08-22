@@ -1,37 +1,26 @@
-import React, { useState } from "react";
-import {Picker} from '@react-native-community/picker';
+import React, { useEffect, useState } from 'react';
+import { ActivityIndicator, FlatList, Text, View } from 'react-native';
 
-import {
-  Alert,
-  Modal,
-  StyleSheet,
-  Text,
-  TouchableHighlight,
-  View
-} from "react-native";
+ const StatusItem = ( ) => {
+  const [isLoading, setLoading] = useState(true);
+ 
 
-const App = () => {
-  const [selectedValue, setSelectedValue] = useState("java");
+   useEffect(() => {
+     async function loadStatus() {
+   const res = await fetch('http://172.16.0.191:3000/propostas/status')
+      .then((response) => response.json())
+      .catch((error) => console.error(error))
+      .finally(() => setLoading(false));
+      console.log(res)
+    }
+    loadStatus();
+  }, []);
+
   return (
-    <View style={styles.container}>
-      <Picker
-        selectedValue={selectedValue}
-        style={{ height: 50, width: 150 }}
-        onValueChange={(itemValue, itemIndex) => setSelectedValue(itemValue)}
-      >
-        <Picker.Item label="Java" value="java" />
-        <Picker.Item label="JavaScript" value="js" />
-      </Picker>
+    <View>
+      <Picker.Item label = '{}' />
     </View>
   );
-}
+};
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    paddingTop: 40,
-    alignItems: "center"
-  }
-});
-
-export default App;
+export default StatusItem;
