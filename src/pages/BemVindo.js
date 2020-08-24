@@ -1,13 +1,16 @@
-import React from 'react';
-import {View, Text,StyleSheet,Image, TouchableOpacity} from 'react-native';
+import React,{useEffect} from 'react';
+import {View, Text, StyleSheet,Image, TouchableOpacity,} from 'react-native';
 import icon from '../assets/filter2.png'
 import Proposta from '../components/Propostas';
+import logo from '../assets/logoMin.png'
 
-const BemVindo = ( { navigation }) => {
+
+BemVindo = ( { navigation,route } ) => {
+       
+     
   return (
   <>
     <View style ={styles.container}>
-      
       <View style ={styles.filtrarButton}>
         <Image source ={icon}></Image>
         <TouchableOpacity title = "Filtrar" style ={{
@@ -17,8 +20,9 @@ const BemVindo = ( { navigation }) => {
          <Text>Filtrar Propostas</Text>
        </TouchableOpacity>
       </View>
+      <Text style={styles.text}>Olá, {route.params.nome} !</Text>
       <Text style={styles.text}>Ultimas propostas</Text>
-       <Proposta navigation ={navigation} ></Proposta>
+      <Proposta navigation ={navigation} ></Proposta>
     </View>
         
     <View style={ styles.footer}>

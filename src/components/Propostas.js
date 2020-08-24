@@ -4,9 +4,10 @@ import mais from '../assets/mais.png';
 
 
 
-export default  function Proposta({navigation}) {
+export default  function Proposta({navigation,route}) {
   const [isLoading, setLoading] = useState(true);
   const [data, setData] = useState('');
+
 
   useEffect(() => {
     fetch('http://172.16.0.191:3000/propostas')

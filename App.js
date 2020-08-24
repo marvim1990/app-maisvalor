@@ -35,6 +35,7 @@ export default function App( {navigation} ) {
         options = {{
          title:"",
          headerLeft: null,
+      
  }}/>
        <Stack.Screen name = "Filtrar"
         component = {Filtrar}

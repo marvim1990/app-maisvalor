@@ -27,21 +27,7 @@ const Filtrar = ({navigation}) => {
 
   }
 
-  if(dados == { }){
-    Alert.alert(
-      "Alert Title",
-      "My Alert Msg",
-      [
-        {
-          text: "Cancel",
-          onPress: () => console.log("Cancel Pressed"),
-          style: "cancel"
-        },
-        { text: "OK", onPress: () => console.log("OK Pressed") }
-      ],
-      { cancelable: false }
-    );
-  }
+  
 
 
   navigation.navigate('Results',{dados})
@@ -56,16 +42,23 @@ const Filtrar = ({navigation}) => {
         
         <Text>NUMERO DA PROPOSTA</Text>
         <TextInput
-        style={{ height: 40, borderColor: 'gray', borderWidth: 1 }}
+        style={styles.Input}
         onChangeText= {setNum}
         value={numeroProposta}
     />
 
-        <Text>CPF</Text>
+        <Text>CPF DO CLIENTE</Text>
         <TextInput style = {styles.Input}
         placeholderTextColor = "#999"
         value = {numeroCpf}
         onChangeText = {setCpf}></TextInput>
+
+
+        <Text>NOME CLINTE</Text>
+        <TextInput style = {styles.Input}
+        placeholderTextColor = "#999"
+        value = {nomeCliente}
+        onChangeText = {setNome}></TextInput>
 
       <View>
         <Picker
@@ -304,26 +297,79 @@ const Filtrar = ({navigation}) => {
         onValueChange={(itemValue, itemIndex) => setBanco(itemValue)}
       >
         <Picker.Item label="BANCO"  />
-        <Picker.Item label="JavaScript" value="js" />
-        <Picker.Item label="JavaScript" value="js" />
-        <Picker.Item label="JavaScript" value="js" />
-        <Picker.Item label="JavaScript" value="js" />
+        <Picker.Item label="Banco Alfa S.A." value="Banco Alfa S.A." />
+        <Picker.Item label="Banco BMG S.A." value="Banco BMG S.A." />
+        <Picker.Item label="Banco Bonsucesso S.A." value="Banco Bonsucesso S.A." />
+        <Picker.Item label="Banco BPN Brasil S.A." value="Banco BPN Brasil S.A." />
+        <Picker.Item label="Banco Bradesco S.A." value="Banco Bradesco S.A." />
+        <Picker.Item label="Banco Cetelem S.A." value="Banco Cetelem S.A." />
+        <Picker.Item label="Banco Cooperativo do Brasil S.A. - BANCOOB" value="Banco Cooperativo do Brasil S.A. - BANCOOB" />
+        <Picker.Item label="Banco Cooperativo Sicredi S.A." value="Banco Cooperativo Sicredi S.A." />
+        <Picker.Item label="Banco da China Brasil S.A." value="Banco da China Brasil S.A." />
+        <Picker.Item label="Banco Daycoval S.A." value="Banco Daycoval S.A." />
+        <Picker.Item label="(BB) Banco do Brasil S.A." value="(BB) Banco do Brasil S.A." />
+        <Picker.Item label="(Banrisul) Banco do Estado do Rio Grande do Sul S.A" value="(Banrisul) Banco do Estado do Rio Grande do Sul S.A" />
+        <Picker.Item label="Banco Fibra S.A." value="Banco Fibra S.A." />
+        <Picker.Item label="Banco Industrial do Brasil S.A." value="Banco Industrial do Brasil S.A." />
+        <Picker.Item label="Banco Intermedium S.A." value="Banco Intermedium S.A." />
+        <Picker.Item label="Banco Investcred Unibanco S.A." value="Banco Investcred Unibanco S.A." />
+        <Picker.Item label="Banco Itaú BMG Consignado S.A." value="Banco Itaú BMG Consignado S.A." />
+        <Picker.Item label="Banco Itaucard S.A." value="Banco Itaucard S.A." />
+        <Picker.Item label="Banco Original S.A." value="Banco Original S.A." />
+        <Picker.Item label="Banco PAN S.A." value="Banco PAN S.A." />
+        <Picker.Item label="Banco Safra S.A." value="Banco Safra S.A." />
+        <Picker.Item label="Banco Votorantim S.A." value="Banco Votorantim S.A." />
+        <Picker.Item label="BRB - Banco de Brasília S.A." value="BRB - Banco de Brasília S.A." />
+        <Picker.Item label="(CEF) Caixa Econômica Federal" value="(CEF) Caixa Econômica Federal" />
+        <Picker.Item label="China Construction Bank (Brasil) Banco Múltiplo S.A." value="China Construction Bank (Brasil) Banco Múltiplo S.A." />
+        <Picker.Item label="HSBC Bank Brasil S.A. - Banco Múltiplo" value="HSBC Bank Brasil S.A. - Banco Múltiplo" />
+        <Picker.Item label="Itaú Unibanco Holding S.A." value="Itaú Unibanco Holding S.A." />
+        <Picker.Item label="Itaú Unibanco S.A." value="Itaú Unibanco S.A." />
+        <Picker.Item label="Paraná Banco S.A." value="Paraná Banco S.A." />
+        <Picker.Item label="Banco Ibi SA Banco Multiplo" value="Banco Ibi SA Banco Multiplo" />
+        <Picker.Item label="Banco Mercantil S.A." value="Banco Mercantil S.A." />
+        <Picker.Item label="Banco Crediare S.A." value="Banco Crediare S.A." />
+        <Picker.Item label="Banco CCB Brasil S.A" value="Banco CCB Brasil S.A" />
+        <Picker.Item label="Banco Crediafam" value="Banco Crediafam" />
+        <Picker.Item label="Banco Industrial do Brasil S.A" value="Banco Industrial do Brasil S.A" />
+        <Picker.Item label="Banco Barigui S.A" value="Banco Barigui S.A" />
+        <Picker.Item label="Facta Financeira S/A" value="Facta Financeira S/A" />
+        <Picker.Item label="Banco SICOOB/COOPMIL" value="Banco SICOOB/COOPMIL" />
+        <Picker.Item label="Bcv-Banco de Crédito e Varejo S.A" value="Bcv-Banco de Crédito e Varejo S.A" />
+        <Picker.Item label="Banco Itaú Consignado" value="Banco Itaú Consignado" />
+        <Picker.Item label="Banco do Estado do Para SA." value="Banco do Estado do Para SA." />
+        <Picker.Item label="Banco Santander S.A" value="Banco Santander S.A" />
+        <Picker.Item label="Banco Ibi SA Banco Multiplo" value="Banco Ibi SA Banco Multiplo" />
+        <Picker.Item label="Banco Mercantil S.A." value="Banco Mercantil S.A." />
+        <Picker.Item label="Banco Crediare S.A." value="Banco Crediare S.A." />
+        <Picker.Item label="Banco CCB Brasil S.A" value="Banco CCB Brasil S.A" />
+        <Picker.Item label="Banco Crediafam" value="Banco Crediafam" />
+        <Picker.Item label="Banco Industrial do Brasil S.A" value="Banco Industrial do Brasil S.A" />
+        <Picker.Item label="Banco Barigui S.A" value="Banco Barigui S.A" />
+        <Picker.Item label="Facta Financeira S/A" value="Facta Financeira S/A" />
+        <Picker.Item label="Banco SICOOB/COOPMIL" value="Banco SICOOB/COOPMIL" />
+        <Picker.Item label="Bcv-Banco de Crédito e Varejo S.A" value="Bcv-Banco de Crédito e Varejo S.A" />
+        <Picker.Item label="Banco Itaú Consignado" value="Banco Itaú Consignado" />
+        <Picker.Item label="Banco do Estado do Para SA." value="Banco do Estado do Para SA." />
+        <Picker.Item label="Banco Santander S.A" value="Banco Santander S.A" />
+        <Picker.Item label="BV Financeira S.A - Crédito, Financiamento e Investimento" value="BV Financeira S.A - Crédito, Financiamento e Investimento" />
+        <Picker.Item label="Banco Agiplan" value="Banco Agiplan" />
+        <Picker.Item label="Banco Santivest" value="Banco Santivest" />
+        <Picker.Item label="001 - BANCO DO BRASIL" value="001 - BANCO DO BRASIL" />
+        <Picker.Item label="Banco CBSS S.A." value="Banco CBSS S.A." />
+        <Picker.Item label="CECOOPES - Central das Cooperativas de Economia e Credito Mutuo" value="CECOOPES - Central das Cooperativas de Economia e Credito Mutuo" />
+        <Picker.Item label="Banco Bradesco Financiamentos S.A" value="Banco Bradesco Financiamentos S.A" />
+        <Picker.Item label="Banco Sul Financeira S.A" value="Banco Sul Financeira S.A" />
+        <Picker.Item label="NBC Bank Brasil S.A" value="NBC Bank Brasil S.A" />
+        <Picker.Item label="CCM DOS FUNCION RIOS P BLICOS DO PODER J" value="CCM DOS FUNCION RIOS P BLICOS DO PODER J" />
+        <Picker.Item label="PORTOCRED S.A CRED" value="PORTOCRED S.A CRED" />
+        <Picker.Item label="FINANCEIRA ALFA S.A CRED" value="FINANCEIRA ALFA S.A CRED" />
+        <Picker.Item label="CECM - SICOOB CREDIJUSTRA" value="CECM - SICOOB CREDIJUSTRA" />
       </Picker>
 
-
-
-
-
-        <Text>NOME CLEINTE</Text>
-        <TextInput style = {styles.Input}
-        placeholderTextColor = "#999"
-        value = {nomeCliente}
-        onChangeText = {setNome}></TextInput>
         
-        <TouchableOpacity onPress ={limparDados}>
+        <TouchableOpacity style = {styles.button} onPress = {limparDados}>
           
-          
-        
         
           <Text>pequisar</Text>
         </TouchableOpacity>
@@ -356,6 +402,15 @@ const styles = StyleSheet.create({
   Input:{
     borderBottomWidth: 1,
     marginTop:5
+  },
+  button: {
+    marginTop: 30,
+    height: 42,
+    backgroundColor:'#CEF207',
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: 5,
+  
   }
 })
 export default Filtrar;
